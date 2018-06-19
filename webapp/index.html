@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="UTF-8">
+<title>My Web Application</title>
+
+<script id="sap-ui-bootstrap"
+	src="https://sapui5.hana.ondemand.com/resources/sap-ui-core.js"
+	data-sap-ui-libs="sap.m"
+	data-sap-ui-theme="sap_belize"
+	data-sap-ui-preload="async" >
+</script>
+
+<script>
+	sap.ui.getCore().attachInit(function () {
+		sap.ui.require([
+			"sap/ui/layout/form/SimpleForm"
+		], function (SimpleForm) {
+			var oImage = new sap.m.Image({
+				src: "img/UI5_logo.png",
+				decorative: false,
+				alt: "SAPUI5 Logo",
+				press: function(oEvent){
+					alert(oEvent.getSource());
+				}
+			});
+			
+			var oImage2 = new sap.m.Image({
+				src: "img/UI5_logo.png",
+				decorative: false,
+				alt: "SAPUI5 Logo",
+				press: function(oEvent) {
+					alert("Hello UI5!");
+				}
+			});
+			
+			var oRadioButton = new sap.m.RadioButton({
+				text: "Left Logo"
+			});
+			
+			var oRadioButton2 = new sap.m.RadioButton({
+				text: "Right Logo"
+			});
+			
+			var layoutGrid = new sap.ui.layout.Grid("myGrid", {
+				content:[
+					oImage,
+					oImage2,
+					new sap.m.Label("myLabel", {
+						text: "Which logo do you like better?",
+						layoutData: new sap.ui.layout.GridData({
+							span: 'XL2 L4 M6 S8'
+						})
+					}),
+					new sap.m.RadioButtonGroup({
+						columns: 2,
+						ariaLabelledBy: "myLabel",
+						buttons: [
+							oRadioButton,
+							oRadioButton2
+						],
+						layoutData: new sap.ui.layout.GridData({
+							span: 'XL2 L4 M6 S8'
+						})
+					})
+				]
+			});
+			layoutGrid.placeAt("content");
+		});
+
+	}) ;
+
+</script>
+</head>
+
+<body class="sapUiBody" id="content">
+
+</body>
+
+</html>
